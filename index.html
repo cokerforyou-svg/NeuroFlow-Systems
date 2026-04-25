@@ -1,897 +1,1327 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NeuroFlow Systems — Smar<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NeuroFlow Systems — Smart Websites & Automation</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>NeuroFlow Systems</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#1E5BFF;--blue-dark:#1245d4;--blue-light:#edf1ff;--blue-xlight:#f5f7ff;--white:#ffffff;--ink:#07091a;--muted:#64748b;--border:rgba(30,91,255,0.1);--border2:rgba(30,91,255,0.18);--ease:cubic-bezier(0.22,1,0.36,1)}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-.btn{display:inline-flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:500;border:none;cursor:pointer;text-decoration:none;transition:all 0.22s var(--ease);white-space:nowrap}
-.btn-sm{font-size:0.85rem;padding:0 18px;height:38px;border-radius:8px}
-.btn-md{font-size:0.92rem;padding:0 24px;height:46px;border-radius:10px}
-.btn-lg{font-size:1rem;padding:0 36px;height:54px;border-radius:12px}
-.btn-primary{background:var(--blue);color:#fff;box-shadow:0 4px 18px rgba(30,91,255,0.3)}
-.btn-primary:hover{background:var(--blue-dark);box-shadow:0 6px 28px rgba(30,91,255,0.4);transform:translateY(-1px)}
-.btn-ghost{background:transparent;color:var(--muted);border:1.5px solid var(--border2)}
-.btn-ghost:hover{color:var(--ink);border-color:var(--blue);background:var(--blue-light);transform:translateY(-1px)}
-.btn-white{background:#fff;color:var(--blue);font-weight:600;box-shadow:0 4px 24px rgba(0,0,0,0.14)}
-.btn-white:hover{background:#f0f4ff;transform:translateY(-2px)}
-.btn-ghost-inv{background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.25)}
-.btn-ghost-inv:hover{background:rgba(255,255,255,0.2);transform:translateY(-1px)}
+  :root {
+    --bg: #050505;
+    --surface: #0f0f0f;
+    --border: #1a1a1a;
+    --accent: #2563EB;
+    --accent-glow: rgba(37,99,235,0.15);
+    --text: #f0f0f0;
+    --muted: #666;
+    --white: #ffffff;
+  }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);box-shadow:0 2px 32px rgba(30,91,255,0.07)}
-.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.18rem;letter-spacing:-0.03em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:8px}
-.nav-logo-icon{width:28px;height:28px;border-radius:7px;background:var(--blue);display:flex;align-items:center;justify-content:center}
-.nav-logo span{color:var(--blue)}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{font-size:0.875rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s}
-.nav-links a:hover{color:var(--ink)}
-.nav-right{display:flex;gap:10px;align-items:center}
-.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:none;background:none}
-.ham span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:all 0.3s}
-.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:12px 24px 20px;z-index:199;box-shadow:0 8px 32px rgba(30,91,255,0.08)}
-.mobile-menu.open{display:block}
-.mobile-menu a{display:block;padding:13px 0;font-size:1rem;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border)}
-.mobile-menu .btn{width:100%;margin-top:14px;height:50px;font-size:1rem}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* HERO */
-.hero{min-height:100vh;padding:140px 6% 100px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(30,91,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(30,91,255,0.06) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 70% 80% at 55% 40%,black 0%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 70% 80% at 55% 40%,black 0%,transparent 70%)}
-.hero-glow{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
-.hero-glow-1{width:600px;height:600px;background:rgba(30,91,255,0.09);right:-100px;top:-100px}
-.hero-glow-2{width:400px;height:400px;background:rgba(30,91,255,0.05);left:10%;bottom:0}
-.hero-inner{position:relative;z-index:1;max-width:800px}
-.hero-pill{display:inline-flex;align-items:center;gap:8px;background:var(--blue-light);border:1px solid rgba(30,91,255,0.2);color:var(--blue);font-size:0.78rem;font-weight:600;padding:5px 14px;border-radius:100px;margin-bottom:30px;letter-spacing:0.04em;text-transform:uppercase}
-.pill-dot{width:6px;height:6px;border-radius:50%;background:var(--blue)}
-.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,5.5vw,4.6rem);font-weight:800;line-height:1.04;letter-spacing:-0.04em;color:var(--ink);margin-bottom:24px}
-.hero h1 em{font-style:normal;color:var(--blue);position:relative;white-space:nowrap}
-.hero h1 em::after{content:'';position:absolute;bottom:2px;left:0;right:0;height:3px;background:var(--blue);opacity:0.25;border-radius:2px}
-.hero-p{font-size:1.1rem;color:var(--muted);line-height:1.7;max-width:500px;margin-bottom:40px;font-weight:400}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-.hero-stats{display:flex;gap:0;margin-top:56px;border-top:1px solid var(--border);padding-top:36px;max-width:500px}
-.stat{flex:1;padding-right:32px;position:relative}
-.stat:not(:last-child)::after{content:'';position:absolute;right:16px;top:4px;bottom:4px;width:1px;background:var(--border)}
-.stat-n{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;letter-spacing:-0.05em;color:var(--ink);line-height:1}
-.stat-n b{color:var(--blue);font-weight:800}
-.stat-l{font-size:0.78rem;color:var(--muted);margin-top:4px}
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
 
-/* SECTIONS */
-.section{padding:96px 6%}
-.section-alt{background:var(--blue-xlight)}
-.s-label{display:inline-flex;align-items:center;gap:8px;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
-.s-label::before{content:'';width:20px;height:2px;background:var(--blue);border-radius:1px}
-.s-title{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:800;letter-spacing:-0.04em;line-height:1.1;color:var(--ink);margin-bottom:16px}
-.s-sub{font-size:1rem;color:var(--muted);line-height:1.7;max-width:480px}
-.s-head{margin-bottom:56px}
+  h1, h2, h3, h4, .logo { font-family: 'Syne', sans-serif; }
 
-/* SERVICES */
-.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.srv-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:36px 32px;position:relative;overflow:hidden;transition:transform 0.28s var(--ease),box-shadow 0.28s var(--ease),border-color 0.28s;cursor:default}
-.srv-card:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(30,91,255,0.13);border-color:rgba(30,91,255,0.3)}
-.srv-card.featured{background:var(--blue);border-color:var(--blue);box-shadow:0 16px 48px rgba(30,91,255,0.32)}
-.srv-card.featured:hover{transform:translateY(-8px);box-shadow:0 28px 72px rgba(30,91,255,0.45)}
-.srv-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px}
-.srv-icon{width:44px;height:44px;border-radius:11px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:1.3rem}
-.featured .srv-icon{background:rgba(255,255,255,0.15)}
-.srv-popular{font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:rgba(255,255,255,0.2);color:#fff;padding:4px 10px;border-radius:100px}
-.srv-card h3{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:10px;color:var(--ink)}
-.featured h3{color:#fff}
-.srv-card p{font-size:0.875rem;line-height:1.65;color:var(--muted);margin-bottom:28px}
-.featured p{color:rgba(255,255,255,0.72)}
-.srv-price{display:flex;align-items:baseline;gap:4px;margin-bottom:6px}
-.srv-price-num{font-family:'Syne',sans-serif;font-size:2.6rem;font-weight:800;letter-spacing:-0.05em;color:var(--ink);line-height:1}
-.featured .srv-price-num{color:#fff}
-.srv-price-mo{font-size:0.88rem;color:var(--muted)}
-.featured .srv-price-mo{color:rgba(255,255,255,0.6)}
-.srv-price-note{font-size:0.78rem;color:var(--muted);margin-bottom:28px}
-.featured .srv-price-note{color:rgba(255,255,255,0.55)}
-.srv-features{list-style:none;margin-bottom:32px;display:flex;flex-direction:column;gap:9px}
-.srv-features li{display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:var(--muted);line-height:1.5}
-.featured .srv-features li{color:rgba(255,255,255,0.8)}
-.srv-features li::before{content:'';width:17px;height:17px;border-radius:50%;flex-shrink:0;margin-top:1px;background:var(--blue-light) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6l2.5 2.5 4.5-5' stroke='%231E5BFF' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat}
-.featured .srv-features li::before{background-color:rgba(255,255,255,0.18);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6l2.5 2.5 4.5-5' stroke='white' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
-.srv-btn{width:100%;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;height:46px;border-radius:10px;transition:all 0.22s var(--ease);background:var(--blue-light);color:var(--blue)}
-.srv-btn:hover{background:var(--blue);color:#fff;transform:translateY(-1px)}
-.featured .srv-btn{background:#fff;color:var(--blue);font-weight:600}
-.featured .srv-btn:hover{background:rgba(255,255,255,0.88)}
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(5,5,5,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
 
-/* WHY US */
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border:1px solid var(--border);border-radius:18px;overflow:hidden}
-.why-card{padding:36px 28px;background:#fff;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:background 0.22s}
-.why-card:hover{background:var(--blue-xlight)}
-.why-card:nth-child(3n){border-right:none}
-.why-card:nth-child(n+4){border-bottom:none}
-.why-no{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:var(--blue);opacity:0.1;letter-spacing:-0.06em;line-height:1;margin-bottom:20px}
-.why-card h4{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:10px;color:var(--ink)}
-.why-card p{font-size:0.875rem;color:var(--muted);line-height:1.65}
+  .logo { font-size: 18px; font-weight: 800; letter-spacing: -0.5px; }
+  .logo span { color: var(--accent); }
 
-/* COMING SOON */
-.cs-card{border:1px solid var(--border);border-radius:22px;overflow:hidden;display:grid;grid-template-columns:1fr 340px}
-.cs-left{padding:56px 52px;background:#fff}
-.cs-badge{display:inline-flex;align-items:center;gap:8px;background:#fffbeb;border:1px solid #fde68a;color:#b45309;font-size:0.72rem;font-weight:700;padding:5px 13px;border-radius:100px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px}
-.cs-badge-dot{width:6px;height:6px;border-radius:50%;background:#f59e0b}
-.cs-left h3{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;letter-spacing:-0.04em;margin-bottom:14px;color:var(--ink);line-height:1.1}
-.cs-left>p{font-size:0.95rem;color:var(--muted);line-height:1.7;margin-bottom:30px}
-.cs-feats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.cs-feat{display:flex;align-items:center;gap:9px;font-size:0.875rem;color:var(--ink)}
-.cs-feat-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0}
-.cs-right{background:var(--blue);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.cs-icon{font-size:5rem;position:relative;z-index:1}
-.cs-notify{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:0.75rem;font-weight:500;padding:7px 14px;border-radius:100px;white-space:nowrap;z-index:1}
+  .nav-right { display: flex; align-items: center; gap: 24px; }
 
-/* CTA */
-.cta-section{padding:0 6% 96px}
-.cta-wrap{background:var(--blue);border-radius:22px;padding:64px 56px;display:flex;align-items:center;justify-content:space-between;gap:40px;position:relative;overflow:hidden;flex-wrap:wrap}
-.cta-left{position:relative;z-index:1}
-.cta-left h2{font-family:'Syne',sans-serif;font-size:clamp(1.5rem,2.5vw,2.1rem);font-weight:800;letter-spacing:-0.04em;color:#fff;max-width:520px;line-height:1.2;margin-bottom:10px}
-.cta-left p{color:rgba(255,255,255,0.65);font-size:0.95rem}
-.cta-actions{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:1}
+  .lang-select {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+  }
+  .lang-select:hover { border-color: var(--accent); color: var(--text); }
 
-/* CONTACT */
-#contact{background:#fff}
-.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:72px;align-items:start}
-.ct-left h3{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:-0.04em;margin-bottom:14px}
-.ct-left>p{font-size:0.95rem;color:var(--muted);line-height:1.7;margin-bottom:36px}
-.ct-details{display:flex;flex-direction:column;gap:14px;margin-bottom:36px}
-.ct-detail{display:flex;align-items:center;gap:13px;font-size:0.9rem;color:var(--ink)}
-.ct-detail a{color:var(--ink);text-decoration:none;transition:color 0.2s}
-.ct-detail a:hover{color:var(--blue)}
-.ct-detail-icon{width:40px;height:40px;border-radius:10px;background:var(--blue-light);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-.ct-hours{background:var(--blue-xlight);border:1px solid var(--border);border-radius:12px;padding:18px 20px}
-.ct-hours p{font-size:0.82rem;color:var(--muted);line-height:1.6}
-.ct-hours strong{color:var(--ink);font-weight:600;display:block;margin-bottom:4px;font-size:0.88rem}
-.ct-form-wrap{background:var(--blue-xlight);border:1px solid var(--border);border-radius:22px;padding:44px 40px}
-.ct-form-wrap h4{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:28px;color:var(--ink)}
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.f-group{margin-bottom:18px}
-.f-group label{display:block;font-size:0.8rem;font-weight:600;color:var(--ink);margin-bottom:7px}
-.f-group input,.f-group textarea,.f-group select{width:100%;font-family:'DM Sans',sans-serif;font-size:0.92rem;color:var(--ink);background:#fff;border:1.5px solid var(--border2);border-radius:10px;padding:12px 15px;outline:none;appearance:none;transition:border-color 0.2s,box-shadow 0.2s}
-.f-group textarea{resize:vertical;min-height:118px}
-.f-group input:focus,.f-group textarea:focus,.f-group select:focus{border-color:var(--blue);box-shadow:0 0 0 3.5px rgba(30,91,255,0.1)}
-.f-group input.err,.f-group textarea.err{border-color:#ef4444}
-.f-err{font-size:0.76rem;color:#ef4444;margin-top:5px;display:none}
-.f-err.show{display:block}
-.f-submit{width:100%;margin-top:4px;height:52px;border-radius:11px;font-size:0.97rem}
-.f-success{display:none;text-align:center;padding:48px 20px}
-.f-success.show{display:block}
-.f-success-icon{width:68px;height:68px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 22px}
-.f-success h4{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:10px}
-.f-success p{color:var(--muted);font-size:0.92rem;line-height:1.6}
+  .nav-cta {
+    background: var(--accent);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
 
-/* FOOTER */
-footer{background:var(--ink);padding:48px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.footer-brand{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:#fff;display:flex;align-items:center;gap:8px}
-.footer-brand span{color:var(--blue)}
-footer nav{display:flex;gap:24px}
-footer nav a{font-size:0.85rem;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s}
-footer nav a:hover{color:#fff}
-.footer-copy{font-size:0.82rem;color:rgba(255,255,255,0.3)}
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
 
-/* RESPONSIVE */
-@media(max-width:1024px){.srv-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto}.why-grid{grid-template-columns:1fr 1fr}.cs-card{grid-template-columns:1fr}.cs-right{min-height:200px}.contact-grid{grid-template-columns:1fr;gap:40px}}
-@media(max-width:768px){nav{padding:0 20px}.nav-links{display:none}.nav-right .btn-ghost{display:none}.ham{display:flex}.hero{padding:110px 20px 70px}.section{padding:70px 20px}.cta-section{padding:0 20px 70px}.why-grid{grid-template-columns:1fr;border-radius:14px}.why-card{border-right:none!important}.cs-left{padding:36px 28px}.cs-feats{grid-template-columns:1fr}.cta-wrap{padding:40px 28px}.ct-form-wrap{padding:30px 22px}.f-row{grid-template-columns:1fr}footer{flex-direction:column;align-items:flex-start;gap:14px}footer nav{flex-wrap:wrap;gap:16px}}
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; color: var(--muted);
+    margin-bottom: 32px;
+  }
+  .hero-badge .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+
+  .hero h1 {
+    font-size: clamp(42px, 7vw, 88px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    max-width: 900px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 .blue { color: var(--accent); }
+
+  .hero p {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    padding: 14px 32px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+  /* WHY US */
+  .why {
+    padding: 100px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .why h2 {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 60px;
+    max-width: 600px;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .why-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    transition: border-color 0.3s;
+  }
+  .why-card:hover { border-color: var(--accent); }
+
+  .why-card .icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .why-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .why-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* PRODUCTS */
+  .products {
+    padding: 100px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .products-header { margin-bottom: 60px; }
+  .products-header h2 {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+
+  .products-section { margin-bottom: 80px; }
+
+  .products-section-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .product-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .product-card:hover { border-color: rgba(37,99,235,0.4); transform: translateY(-2px); }
+  .product-card:hover::before { opacity: 1; }
+
+  .product-card.featured {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, #0f0f0f 0%, #0a1628 100%);
+  }
+
+  .product-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .product-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+
+  .product-badge {
+    background: var(--accent-glow);
+    border: 1px solid rgba(37,99,235,0.3);
+    color: #60a5fa;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .product-badge.featured-badge {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+
+  .product-desc {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 28px;
+    max-width: 680px;
+  }
+
+  .product-steps {
+    display: flex;
+    gap: 0;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .step-num {
+    width: 24px; height: 24px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .step-arrow {
+    color: var(--border);
+    margin: 0 12px;
+    font-size: 16px;
+  }
+
+  .product-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .product-price { display: flex; align-items: baseline; gap: 8px; }
+
+  .price-setup {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .price-main {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--white);
+  }
+
+  .price-period { font-size: 14px; color: var(--muted); }
+
+  .price-one-time {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--white);
+  }
+
+  .btn-card {
+    background: var(--accent);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+  .btn-card:hover { opacity: 0.85; }
+
+  .coming-soon-card {
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .coming-soon-left h3 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--muted);
+  }
+
+  .coming-soon-left p {
+    font-size: 14px;
+    color: #444;
+  }
+
+  .soon-badge {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: #555;
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* CONTACT */
+  .contact {
+    padding: 100px 60px;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact h2 {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+
+  .contact > p {
+    color: var(--muted);
+    font-size: 16px;
+    margin-bottom: 48px;
+    line-height: 1.6;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form input, .form select, .form textarea {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .form input:focus, .form select:focus, .form textarea:focus {
+    border-color: var(--accent);
+  }
+
+  .form select option { background: #111; }
+
+  .form textarea { resize: vertical; min-height: 120px; }
+
+  .form-submit {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 10px;
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .form-submit:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  .contact-email {
+    margin-top: 32px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .contact-email a { color: var(--accent); text-decoration: none; }
+
+  .success-msg {
+    display: none;
+    background: rgba(37,99,235,0.1);
+    border: 1px solid rgba(37,99,235,0.3);
+    color: #60a5fa;
+    padding: 16px 24px;
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer .logo { font-size: 16px; }
+  footer p { font-size: 13px; color: var(--muted); }
+
+  /* TRANSLATIONS hidden by default */
+  [data-lang] { display: none; }
+  [data-lang="en"] { display: block; }
+  span[data-lang] { display: none; }
+  span[data-lang="en"] { display: inline; }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .why, .products, .contact { padding: 60px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { padding: 32px 24px; text-align: center; justify-content: center; }
+    .product-steps { flex-direction: column; }
+    .step-arrow { transform: rotate(90deg); }
+  }
 </style>
 </head>
 <body>
 
-<nav id="nav">
-  <a href="#" class="nav-logo">
-    <div class="nav-logo-icon">
-      <svg viewBox="0 0 24 24" fill="none" style="width:14px;height:14px">
-        <path d="M12 4L20 8V16L12 20L4 16V8L12 4Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M12 4V20M4 8L20 16M20 8L4 16" stroke="white" stroke-width="1.2" stroke-opacity="0.6"/>
-      </svg>
-    </div>
-    Neuro<span>Flow</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#why-us">Why Us</a></li>
-    <li><a href="#coming-soon">Coming Soon</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+<!-- NAV -->
+<nav>
+  <div class="logo">Neuro<span>Flow</span></div>
   <div class="nav-right">
-    <a href="#contact" class="btn btn-ghost btn-sm">Get in Touch</a>
-    <a href="#contact" class="btn btn-primary btn-sm">Get Started</a>
+    <select class="lang-select" onchange="setLang(this.value)">
+      <option value="en">EN</option>
+      <option value="fr">FR</option>
+      <option value="de">DE</option>
+      <option value="es">ES</option>
+      <option value="it">IT</option>
+      <option value="pt">PT</option>
+      <option value="ru">RU</option>
+      <option value="sr">SR</option>
+    </select>
+    <a href="#contact" class="nav-cta">
+      <span data-lang="en">Get Started</span>
+      <span data-lang="fr">Commencer</span>
+      <span data-lang="de">Loslegen</span>
+      <span data-lang="es">Empezar</span>
+      <span data-lang="it">Inizia</span>
+      <span data-lang="pt">Começar</span>
+      <span data-lang="ru">Начать</span>
+      <span data-lang="sr">Počni</span>
+    </a>
   </div>
-  <button class="ham" id="ham" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#services" onclick="closeMenu()">Services</a>
-  <a href="#why-us" onclick="closeMenu()">Why Us</a>
-  <a href="#coming-soon" onclick="closeMenu()">Coming Soon</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
-  <a href="#contact" class="btn btn-primary" onclick="closeMenu()">Get Started</a>
-</div>
-
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-glow hero-glow-1"></div>
-  <div class="hero-glow hero-glow-2"></div>
-  <div class="hero-inner">
-    <div class="hero-pill"><div class="pill-dot"></div>Digital Automation Agency</div>
-    <h1>Smart Websites &<br><em>Automation Systems</em><br>for Modern Businesses</h1>
-    <p class="hero-p">We help businesses get more customers and never miss a lead again — with modern websites and automated workflows.</p>
-    <div class="hero-cta">
-      <a href="#contact" class="btn btn-primary btn-lg">Get Started →</a>
-      <a href="#services" class="btn btn-ghost btn-lg">See Pricing</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-n">3<b>+</b></div><div class="stat-l">Core services</div></div>
-      <div class="stat"><div class="stat-n">24<b>/7</b></div><div class="stat-l">Lead capture</div></div>
-      <div class="stat"><div class="stat-n">100<b>%</b></div><div class="stat-l">Automated</div></div>
-    </div>
+  <div class="hero-badge"><span class="dot"></span>
+    <span data-lang="en">AI Automation for Small Business</span>
+    <span data-lang="fr">Automatisation IA pour PME</span>
+    <span data-lang="de">KI-Automatisierung für KMU</span>
+    <span data-lang="es">Automatización IA para pequeñas empresas</span>
+    <span data-lang="it">Automazione IA per PMI</span>
+    <span data-lang="pt">Automação IA para pequenas empresas</span>
+    <span data-lang="ru">ИИ-автоматизация для малого бизнеса</span>
+    <span data-lang="sr">AI automatizacija za mala preduzeća</span>
+  </div>
+
+  <h1>
+    <span data-lang="en">Stop losing clients.<br>Start growing <span class="blue">automatically.</span></span>
+    <span data-lang="fr">Arrêtez de perdre des clients.<br>Commencez à grandir <span class="blue">automatiquement.</span></span>
+    <span data-lang="de">Hören Sie auf, Kunden zu verlieren.<br>Wachsen Sie <span class="blue">automatisch.</span></span>
+    <span data-lang="es">Deja de perder clientes.<br>Crece <span class="blue">automáticamente.</span></span>
+    <span data-lang="it">Smetti di perdere clienti.<br>Cresci <span class="blue">automaticamente.</span></span>
+    <span data-lang="pt">Pare de perder clientes.<br>Cresça <span class="blue">automaticamente.</span></span>
+    <span data-lang="ru">Перестаньте терять клиентов.<br>Растите <span class="blue">автоматически.</span></span>
+    <span data-lang="sr">Prestanite gubiti klijente.<br>Rastite <span class="blue">automatski.</span></span>
+  </h1>
+
+  <p>
+    <span data-lang="en">We build AI systems that handle what your business doesn't have time for — so you can focus on what matters.</span>
+    <span data-lang="fr">Nous créons des systèmes IA qui gèrent ce que votre entreprise n'a pas le temps de faire.</span>
+    <span data-lang="de">Wir bauen KI-Systeme, die erledigen, wofür Ihr Unternehmen keine Zeit hat.</span>
+    <span data-lang="es">Creamos sistemas de IA que manejan lo que tu negocio no tiene tiempo de hacer.</span>
+    <span data-lang="it">Creiamo sistemi AI che gestiscono ciò per cui la tua azienda non ha tempo.</span>
+    <span data-lang="pt">Criamos sistemas de IA que tratam do que seu negócio não tem tempo para fazer.</span>
+    <span data-lang="ru">Мы создаём ИИ-системы которые делают то, на что у вашего бизнеса нет времени.</span>
+    <span data-lang="sr">Gradimo AI sisteme koji rade ono za što vaš posao nema vremena.</span>
+  </p>
+
+  <div class="hero-buttons">
+    <a href="#contact" class="btn-primary">
+      <span data-lang="en">Get a free consultation</span>
+      <span data-lang="fr">Consultation gratuite</span>
+      <span data-lang="de">Kostenlose Beratung</span>
+      <span data-lang="es">Consulta gratuita</span>
+      <span data-lang="it">Consulenza gratuita</span>
+      <span data-lang="pt">Consulta gratuita</span>
+      <span data-lang="ru">Бесплатная консультация</span>
+      <span data-lang="sr">Besplatne konsultacije</span>
+    </a>
+    <a href="#products" class="btn-secondary">
+      <span data-lang="en">See our services</span>
+      <span data-lang="fr">Voir nos services</span>
+      <span data-lang="de">Unsere Dienste</span>
+      <span data-lang="es">Ver servicios</span>
+      <span data-lang="it">Vedi i servizi</span>
+      <span data-lang="pt">Ver serviços</span>
+      <span data-lang="ru">Наши услуги</span>
+      <span data-lang="sr">Naše usluge</span>
+    </a>
   </div>
 </section>
 
-<section class="section section-alt" id="services">
-  <div class="s-head">
-    <div class="s-label">Pricing & Services</div>
-    <h2 class="s-title">Simple plans.<br>Powerful results.</h2>
-    <p class="s-sub">Pick the package that fits your business — clear pricing, no surprises.</p>
+<!-- WHY US -->
+<section class="why">
+  <div class="section-label">
+    <span data-lang="en">Why NeuroFlow</span>
+    <span data-lang="fr">Pourquoi NeuroFlow</span>
+    <span data-lang="de">Warum NeuroFlow</span>
+    <span data-lang="es">Por qué NeuroFlow</span>
+    <span data-lang="it">Perché NeuroFlow</span>
+    <span data-lang="pt">Por que NeuroFlow</span>
+    <span data-lang="ru">Почему NeuroFlow</span>
+    <span data-lang="sr">Zašto NeuroFlow</span>
   </div>
-  <div class="srv-grid">
-    <div class="srv-card">
-      <div class="srv-top"><div class="srv-icon">🌐</div></div>
-      <h3>Website Only</h3>
-      <p>A modern, professional website that helps customers understand your business and contact you with ease.</p>
-      <div class="srv-price"><div class="srv-price-num">$99</div><div class="srv-price-mo">/month</div></div>
-      <div class="srv-price-note">Perfect for getting online professionally</div>
-      <ul class="srv-features">
-        <li>Custom modern design</li>
-        <li>Fully mobile responsive</li>
-        <li>Contact form included</li>
-        <li>Fast & SEO-ready</li>
-      </ul>
-      <button class="srv-btn" onclick="scrollContact()">Get Started</button>
-    </div>
-    <div class="srv-card featured">
-      <div class="srv-top"><div class="srv-icon">⚡</div><div class="srv-popular">Best Value</div></div>
-      <h3>Website + Automation</h3>
-      <p>Full package: professional website AND a complete lead automation system with Google Sheets integration.</p>
-      <div class="srv-price"><div class="srv-price-num">$249</div><div class="srv-price-mo">/month</div></div>
-      <div class="srv-price-note">Everything in one powerful package</div>
-      <ul class="srv-features">
-        <li>Full website build</li>
-        <li>Lead capture automation</li>
-        <li>Google Sheets integration</li>
-        <li>Instant lead notifications</li>
-        <li>Priority support</li>
-      </ul>
-      <button class="srv-btn" onclick="scrollContact()">Get Started</button>
-    </div>
-    <div class="srv-card">
-      <div class="srv-top"><div class="srv-icon">⚙️</div></div>
-      <h3>Automation Only</h3>
-      <p>Connect your existing business to an automated system that routes customer inquiries straight into Google Sheets.</p>
-      <div class="srv-price"><div class="srv-price-num">$149</div><div class="srv-price-mo">/month</div></div>
-      <div class="srv-price-note">Works with your existing website</div>
-      <ul class="srv-features">
-        <li>Lead capture system</li>
-        <li>Google Sheets sync</li>
-        <li>Real-time notifications</li>
-        <li>Zero manual data entry</li>
-      </ul>
-      <button class="srv-btn" onclick="scrollContact()">Get Started</button>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="why-us">
-  <div class="s-head">
-    <div class="s-label">Why NeuroFlow</div>
-    <h2 class="s-title">Built for businesses<br>that mean business.</h2>
-    <p class="s-sub">We remove the bottlenecks that cost you customers and time every single day.</p>
-  </div>
+  <h2>
+    <span data-lang="en">Built by humans. Delivered with precision.</span>
+    <span data-lang="fr">Construit par des humains. Livré avec précision.</span>
+    <span data-lang="de">Von Menschen gebaut. Mit Präzision geliefert.</span>
+    <span data-lang="es">Construido por humanos. Entregado con precisión.</span>
+    <span data-lang="it">Costruito da persone. Consegnato con precisione.</span>
+    <span data-lang="pt">Construído por humanos. Entregue com precisão.</span>
+    <span data-lang="ru">Сделано людьми. Доставлено точно.</span>
+    <span data-lang="sr">Napravljeno od strane ljudi. Isporučeno s preciznošću.</span>
+  </h2>
   <div class="why-grid">
-    <div class="why-card"><div class="why-no">01</div><h4>No Lost Customer Requests</h4><p>Every inquiry is automatically captured and stored. Nothing falls through the cracks — ever.</p></div>
-    <div class="why-card"><div class="why-no">02</div><h4>Faster Response Time</h4><p>Your team gets notified the moment a lead arrives, so you can respond before the competition does.</p></div>
-    <div class="why-card"><div class="why-no">03</div><h4>Automated Workflow</h4><p>Stop copying data manually. Our systems route information automatically to exactly where it belongs.</p></div>
-    <div class="why-card"><div class="why-no">04</div><h4>More Organized Operations</h4><p>Customer data flows cleanly into Google Sheets — structured, searchable, and always up to date.</p></div>
-    <div class="why-card"><div class="why-no">05</div><h4>Saves Time & Increases Efficiency</h4><p>Hours saved every week on admin work, so your team can focus on growing.</p></div>
-    <div class="why-card" style="display:flex;align-items:center;justify-content:center;text-align:center;background:var(--blue-xlight)">
-      <div>
-        <div style="font-size:2.2rem;margin-bottom:12px">🚀</div>
-        <div style="font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;color:var(--blue);letter-spacing:-0.02em;margin-bottom:8px">Ready to grow?</div>
-        <div style="font-size:0.82rem;color:var(--muted);margin-bottom:16px">Start automating today</div>
-        <button class="btn btn-primary btn-sm" onclick="scrollContact()">Get Started</button>
-      </div>
+    <div class="why-card">
+      <div class="icon">🤝</div>
+      <h3 data-lang="en">Personal setup for each client</h3>
+      <h3 data-lang="fr">Configuration personnelle pour chaque client</h3>
+      <h3 data-lang="de">Persönliche Einrichtung für jeden Kunden</h3>
+      <h3 data-lang="es">Configuración personal para cada cliente</h3>
+      <h3 data-lang="it">Configurazione personale per ogni cliente</h3>
+      <h3 data-lang="pt">Configuração pessoal para cada cliente</h3>
+      <h3 data-lang="ru">Персональная настройка для каждого</h3>
+      <h3 data-lang="sr">Lična konfiguracija za svakog klijenta</h3>
+      <p data-lang="en">We don't sell a generic tool. We listen to your business, understand your needs, and build something that actually fits.</p>
+      <p data-lang="fr">Nous n'vendons pas un outil générique. Nous écoutons votre entreprise et construisons quelque chose qui correspond vraiment.</p>
+      <p data-lang="de">Wir verkaufen kein generisches Tool. Wir hören Ihrem Unternehmen zu und bauen etwas, das wirklich passt.</p>
+      <p data-lang="es">No vendemos una herramienta genérica. Escuchamos tu negocio y construimos algo que realmente encaja.</p>
+      <p data-lang="it">Non vendiamo uno strumento generico. Ascoltiamo la tua azienda e costruiamo qualcosa che si adatta davvero.</p>
+      <p data-lang="pt">Não vendemos uma ferramenta genérica. Ouvimos seu negócio e construímos algo que realmente se encaixa.</p>
+      <p data-lang="ru">Мы не продаём шаблонный инструмент. Мы слушаем ваш бизнес и строим то что реально подходит.</p>
+      <p data-lang="sr">Ne prodajemo generički alat. Slušamo vaš posao i gradimo nešto što zaista odgovara.</p>
+    </div>
+    <div class="why-card">
+      <div class="icon">⚡</div>
+      <h3 data-lang="en">Ready in 1-2 days</h3>
+      <h3 data-lang="fr">Prêt en 1-2 jours</h3>
+      <h3 data-lang="de">Bereit in 1-2 Tagen</h3>
+      <h3 data-lang="es">Listo en 1-2 días</h3>
+      <h3 data-lang="it">Pronto in 1-2 giorni</h3>
+      <h3 data-lang="pt">Pronto em 1-2 dias</h3>
+      <h3 data-lang="ru">Готово за 1-2 дня</h3>
+      <h3 data-lang="sr">Gotovo za 1-2 dana</h3>
+      <p data-lang="en">No long projects. No waiting weeks. We set everything up fast and hand it over working.</p>
+      <p data-lang="fr">Pas de longs projets. Pas d'attente de semaines. Nous configurons tout rapidement.</p>
+      <p data-lang="de">Keine langen Projekte. Kein wochenlange Warten. Wir richten alles schnell ein.</p>
+      <p data-lang="es">Sin proyectos largos. Sin esperar semanas. Configuramos todo rápido y lo entregamos funcionando.</p>
+      <p data-lang="it">Nessun progetto lungo. Nessuna settimana di attesa. Configuriamo tutto velocemente.</p>
+      <p data-lang="pt">Sem projetos longos. Sem esperar semanas. Configuramos tudo rapidamente.</p>
+      <p data-lang="ru">Никаких долгих проектов. Никаких недель ожидания. Настраиваем быстро и сдаём рабочим.</p>
+      <p data-lang="sr">Nema dugih projekata. Nema čekanja nedeljama. Sve postavljamo brzo.</p>
+    </div>
+    <div class="why-card">
+      <div class="icon">🎯</div>
+      <h3 data-lang="en">You stay in control</h3>
+      <h3 data-lang="fr">Vous gardez le contrôle</h3>
+      <h3 data-lang="de">Sie behalten die Kontrolle</h3>
+      <h3 data-lang="es">Tú mantienes el control</h3>
+      <h3 data-lang="it">Mantieni il controllo</h3>
+      <h3 data-lang="pt">Você mantém o controle</h3>
+      <h3 data-lang="ru">Вы остаётесь в контроле</h3>
+      <h3 data-lang="sr">Vi ostajete u kontroli</h3>
+      <p data-lang="en">AI handles the work, but you decide what happens. Nothing is sent without your knowledge.</p>
+      <p data-lang="fr">L'IA gère le travail, mais vous décidez ce qui se passe. Rien n'est envoyé sans votre connaissance.</p>
+      <p data-lang="de">KI erledigt die Arbeit, aber Sie entscheiden, was passiert. Nichts wird ohne Ihr Wissen gesendet.</p>
+      <p data-lang="es">La IA hace el trabajo, pero tú decides qué pasa. Nada se envía sin tu conocimiento.</p>
+      <p data-lang="it">L'AI gestisce il lavoro, ma sei tu a decidere cosa succede. Nulla viene inviato senza la tua conoscenza.</p>
+      <p data-lang="pt">A IA faz o trabalho, mas você decide o que acontece. Nada é enviado sem seu conhecimento.</p>
+      <p data-lang="ru">ИИ делает работу но вы решаете что происходит. Ничего не отправляется без вашего ведома.</p>
+      <p data-lang="sr">AI obavlja posao, ali vi odlučujete šta se dešava. Ništa se ne šalje bez vašeg znanja.</p>
     </div>
   </div>
 </section>
 
-<section class="section section-alt" id="coming-soon">
-  <div class="s-head">
-    <div class="s-label">What's Next</div>
-    <h2 class="s-title">The next level<br>is almost here.</h2>
-  </div>
-  <div class="cs-card">
-    <div class="cs-left">
-      <div class="cs-badge"><div class="cs-badge-dot"></div>Coming Soon</div>
-      <h3>Telegram AI<br>Chatbot System</h3>
-      <p>An intelligent AI chatbot built into Telegram — automatically handling messages, answering questions, and capturing leads around the clock.</p>
-      <div class="cs-feats">
-        <div class="cs-feat"><div class="cs-feat-dot"></div>Auto-replies to messages</div>
-        <div class="cs-feat"><div class="cs-feat-dot"></div>Answers common questions</div>
-        <div class="cs-feat"><div class="cs-feat-dot"></div>Available 24/7, every day</div>
-        <div class="cs-feat"><div class="cs-feat-dot"></div>Generates leads via chat</div>
-      </div>
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="products-header">
+    <div class="section-label">
+      <span data-lang="en">Our Services</span>
+      <span data-lang="fr">Nos Services</span>
+      <span data-lang="de">Unsere Dienste</span>
+      <span data-lang="es">Nuestros Servicios</span>
+      <span data-lang="it">I Nostri Servizi</span>
+      <span data-lang="pt">Nossos Serviços</span>
+      <span data-lang="ru">Наши услуги</span>
+      <span data-lang="sr">Naše Usluge</span>
     </div>
-    <div class="cs-right">
-      <div class="cs-icon">🤖</div>
-      <div class="cs-notify">AI is online and ready</div>
-    </div>
+    <h2>
+      <span data-lang="en">Everything your business needs to stop losing money.</span>
+      <span data-lang="fr">Tout ce dont votre entreprise a besoin pour arrêter de perdre de l'argent.</span>
+      <span data-lang="de">Alles, was Ihr Unternehmen braucht, um aufzuhören, Geld zu verlieren.</span>
+      <span data-lang="es">Todo lo que tu negocio necesita para dejar de perder dinero.</span>
+      <span data-lang="it">Tutto ciò di cui la tua azienda ha bisogno per smettere di perdere soldi.</span>
+      <span data-lang="pt">Tudo que seu negócio precisa para parar de perder dinheiro.</span>
+      <span data-lang="ru">Всё что нужно вашему бизнесу чтобы перестать терять деньги.</span>
+      <span data-lang="sr">Sve što vaš posao treba da prestane gubiti novac.</span>
+    </h2>
   </div>
-</section>
 
-<div class="cta-section">
-  <div class="cta-wrap">
-    <div class="cta-left">
-      <h2>Start automating your business today and grow faster with NeuroFlow Systems</h2>
-      <p>Takes less than 5 minutes to get in touch. We'll handle everything else.</p>
+  <!-- AI AUTOMATION -->
+  <div class="products-section">
+    <div class="products-section-title">
+      <span data-lang="en">— AI Automation</span>
+      <span data-lang="fr">— Automatisation IA</span>
+      <span data-lang="de">— KI-Automatisierung</span>
+      <span data-lang="es">— Automatización IA</span>
+      <span data-lang="it">— Automazione IA</span>
+      <span data-lang="pt">— Automação IA</span>
+      <span data-lang="ru">— ИИ Автоматизация</span>
+      <span data-lang="sr">— AI Automatizacija</span>
     </div>
-    <div class="cta-actions">
-      <button class="btn btn-white btn-lg" onclick="scrollContact()">Contact Us</button>
-      <a href="#services" class="btn btn-ghost-inv btn-lg">View Pricing</a>
-    </div>
-  </div>
-</div>
 
-<section class="section" id="contact">
-  <div class="contact-grid">
-    <div class="ct-left">
-      <div class="s-label">Contact Us</div>
-      <h3>Let's build something great together.</h3>
-      <p>Fill out the form and our team will get back to you within 24 hours to discuss your project.</p>
-      <div class="ct-details">
-        <div class="ct-detail"><div class="ct-detail-icon">📞</div><a href="tel:+38267539877">+382 67 539 877</a></div>
-        <div class="ct-detail"><div class="ct-detail-icon">✉️</div><a href="mailto:m71051705@gmail.com">m71051705@gmail.com</a></div>
+    <!-- AI Follow-up -->
+    <div class="product-card">
+      <div class="product-top">
+        <div class="product-name">AI Follow-up</div>
+        <div class="product-badge">
+          <span data-lang="en">Most popular</span>
+          <span data-lang="fr">Plus populaire</span>
+          <span data-lang="de">Am beliebtesten</span>
+          <span data-lang="es">Más popular</span>
+          <span data-lang="it">Più popolare</span>
+          <span data-lang="pt">Mais popular</span>
+          <span data-lang="ru">Самый популярный</span>
+          <span data-lang="sr">Najpopularniji</span>
+        </div>
       </div>
-      <div class="ct-hours"><strong>Response time</strong><p>We typically respond within 24 hours. For urgent inquiries, feel free to call or email us directly.</p></div>
-    </div>
-    <div class="ct-form-wrap" id="formWrap">
-      <div id="formContent">
-        <h4>Send us a message</h4>
-        <form id="ctForm" novalidate>
-          <div class="f-row">
-            <div class="f-group">
-              <label>Full Name *</label>
-              <input type="text" id="fname" placeholder="John Smith">
-              <div class="f-err" id="fnameErr">Please enter your name.</div>
+      <p class="product-desc">
+        <span data-lang="en">You met a potential client but forgot to follow up? That's how deals die. Our AI watches every lead and automatically sends follow-up emails until they respond — without you lifting a finger.</span>
+        <span data-lang="fr">Vous avez rencontré un client potentiel mais oublié de faire un suivi? C'est ainsi que les affaires meurent. Notre IA surveille chaque prospect et envoie automatiquement des e-mails de suivi jusqu'à ce qu'ils répondent.</span>
+        <span data-lang="de">Sie haben einen potenziellen Kunden getroffen, aber vergessen nachzufassen? So sterben Deals. Unsere KI überwacht jeden Lead und sendet automatisch Follow-up-E-Mails bis sie antworten.</span>
+        <span data-lang="es">¿Conociste a un cliente potencial pero olvidaste hacer seguimiento? Así es como mueren los tratos. Nuestra IA vigila cada lead y envía emails de seguimiento automáticamente hasta que responden.</span>
+        <span data-lang="it">Hai incontrato un potenziale cliente ma hai dimenticato di fare un follow-up? È così che gli affari muoiono. La nostra AI monitora ogni lead e invia automaticamente email di follow-up finché non rispondono.</span>
+        <span data-lang="pt">Você conheceu um cliente potencial mas esqueceu de fazer o acompanhamento? É assim que os negócios morrem. Nossa IA monitora cada lead e envia e-mails de acompanhamento automaticamente até que respondam.</span>
+        <span data-lang="ru">Встретились с потенциальным клиентом но забыли написать? Именно так умирают сделки. Наш ИИ следит за каждым лидом и автоматически отправляет письма пока не получит ответ.</span>
+        <span data-lang="sr">Sreli ste potencijalnog klijenta ali zaboravili da pratite? Tako umiru poslovi. Naš AI prati svaki lead i automatski šalje follow-up emailove dok ne dobijete odgovor.</span>
+      </p>
+      <div class="product-steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <span data-lang="en">Lead appears</span>
+          <span data-lang="fr">Lead apparaît</span>
+          <span data-lang="de">Lead erscheint</span>
+          <span data-lang="es">Aparece el lead</span>
+          <span data-lang="it">Appare il lead</span>
+          <span data-lang="pt">Lead aparece</span>
+          <span data-lang="ru">Появился лид</span>
+          <span data-lang="sr">Pojavljuje se lead</span>
+        </div>
+        <span class="step-arrow">→</span>
+        <div class="step">
+          <div class="step-num">2</div>
+          <span data-lang="en">No reply in 3 days</span>
+          <span data-lang="fr">Pas de réponse en 3 jours</span>
+          <span data-lang="de">Keine Antwort in 3 Tagen</span>
+          <span data-lang="es">Sin respuesta en 3 días</span>
+          <span data-lang="it">Nessuna risposta in 3 giorni</span>
+          <span data-lang="pt">Sem resposta em 3 dias</span>
+          <span data-lang="ru">Нет ответа 3 дня</span>
+          <span data-lang="sr">Nema odgovora 3 dana</span>
+        </div>
+        <span class="step-arrow">→</span>
+        <div class="step">
+          <div class="step-num">3</div>
+          <span data-lang="en">AI sends follow-up</span>
+          <span data-lang="fr">L'IA envoie un suivi</span>
+          <span data-lang="de">KI sendet Follow-up</span>
+          <span data-lang="es">IA envía seguimiento</span>
+          <span data-lang="it">AI invia follow-up</span>
+          <span data-lang="pt">AI envia follow-up</span>
+          <span data-lang="ru">ИИ отправляет письмо</span>
+          <span data-lang="sr">AI šalje follow-up</span>
+        </div>
+        <span class="step-arrow">→</span>
+        <div class="step">
+          <div class="step-num">4</div>
+          <span data-lang="en">You get notified when they reply</span>
+          <span data-lang="fr">Vous êtes notifié quand ils répondent</span>
+          <span data-lang="de">Sie werden benachrichtigt wenn sie antworten</span>
+          <span data-lang="es">Te notifican cuando responden</span>
+          <span data-lang="it">Vieni notificato quando rispondono</span>
+          <span data-lang="pt">Você é notificado quando respondem</span>
+          <span data-lang="ru">Вы получаете уведомление об ответе</span>
+          <span data-lang="sr">Dobijate obaveštenje kada odgovore</span>
+        </div>
+      </div>
+      <div class="product-bottom">
+        <div class="product-price">
+          <div>
+            <div class="price-setup">
+              <span data-lang="en">€149 once to set up · then</span>
+              <span data-lang="fr">€149 une fois · puis</span>
+              <span data-lang="de">€149 einmalig · dann</span>
+              <span data-lang="es">€149 una vez · luego</span>
+              <span data-lang="it">€149 una volta · poi</span>
+              <span data-lang="pt">€149 uma vez · depois</span>
+              <span data-lang="ru">€149 разово за настройку · потом</span>
+              <span data-lang="sr">€149 jednokratno · zatim</span>
             </div>
-            <div class="f-group">
-              <label>Phone Number *</label>
-              <input type="tel" id="fphone" placeholder="+1 555 000 0000">
-              <div class="f-err" id="fphoneErr">Please enter your phone number.</div>
-            </div>
+            <div><span class="price-main">€99</span><span class="price-period">/month</span></div>
           </div>
-          <div class="f-group">
-            <label>Interested In</label>
-            <select id="fservice">
-              <option value="">Select a service (optional)</option>
-              <option>Website Only — $99/mo</option>
-              <option>Automation System — $149/mo</option>
-              <option>Website + Automation — $249/mo</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
-          <div class="f-group">
-            <label>Message *</label>
-            <textarea id="fmsg" placeholder="Tell us about your business..."></textarea>
-            <div class="f-err" id="fmsgErr">Please enter a message.</div>
-          </div>
-          <button type="submit" class="btn btn-primary f-submit" id="fsubmit">Send Message →</button>
-        </form>
+        </div>
+        <a href="#contact" class="btn-card">
+          <span data-lang="en">Get this</span>
+          <span data-lang="fr">Obtenir</span>
+          <span data-lang="de">Holen</span>
+          <span data-lang="es">Obtener</span>
+          <span data-lang="it">Ottieni</span>
+          <span data-lang="pt">Obter</span>
+          <span data-lang="ru">Получить</span>
+          <span data-lang="sr">Uzmi</span>
+        </a>
       </div>
-      <div class="f-success" id="fSuccess">
-        <div class="f-success-icon">✓</div>
-        <h4>Message Sent!</h4>
-        <p>Thank you for reaching out.<br>We'll get back to you within 24 hours.</p>
+    </div>
+
+    <!-- AI Sales Agent -->
+    <div class="product-card">
+      <div class="product-top">
+        <div class="product-name">AI Sales Agent</div>
+      </div>
+      <p class="product-desc">
+        <span data-lang="en">Every day, AI finds new potential clients for your business, writes them a personal email, and follows up if they don't reply. All contacts and results land in your Google Sheets automatically.</span>
+        <span data-lang="fr">Chaque jour, l'IA trouve de nouveaux clients potentiels pour votre entreprise, leur écrit un e-mail personnel et fait un suivi s'ils ne répondent pas.</span>
+        <span data-lang="de">Jeden Tag findet die KI neue potenzielle Kunden für Ihr Unternehmen, schreibt ihnen eine persönliche E-Mail und verfolgt sie, wenn sie nicht antworten.</span>
+        <span data-lang="es">Cada día, la IA encuentra nuevos clientes potenciales para tu negocio, les escribe un email personal y hace seguimiento si no responden.</span>
+        <span data-lang="it">Ogni giorno, l'AI trova nuovi potenziali clienti per la tua azienda, scrive loro un'email personale e fa un follow-up se non rispondono.</span>
+        <span data-lang="pt">Todos os dias, a IA encontra novos clientes potenciais para seu negócio, escreve um e-mail pessoal e acompanha se não responderem.</span>
+        <span data-lang="ru">Каждый день ИИ находит новых потенциальных клиентов для вашего бизнеса, пишет им персональное письмо и следит за ответами. Все контакты автоматически в Google Sheets.</span>
+        <span data-lang="sr">Svaki dan, AI pronalazi nove potencijalne klijente za vaš posao, piše im lični email i prati ih ako ne odgovore.</span>
+      </p>
+      <div class="product-steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <span data-lang="en">AI finds leads daily</span>
+          <span data-lang="ru">ИИ находит лидов ежедневно</span>
+          <span data-lang="fr">L'IA trouve des leads quotidiennement</span>
+          <span data-lang="de">KI findet täglich Leads</span>
+          <span data-lang="es">IA encuentra leads diariamente</span>
+          <span data-lang="it">AI trova lead quotidianamente</span>
+          <span data-lang="pt">AI encontra leads diariamente</span>
+          <span data-lang="sr">AI pronalazi leadove dnevno</span>
+        </div>
+        <span class="step-arrow">→</span>
+        <div class="step">
+          <div class="step-num">2</div>
+          <span data-lang="en">Sends personal emails</span>
+          <span data-lang="ru">Отправляет персональные письма</span>
+          <span data-lang="fr">Envoie des e-mails personnels</span>
+          <span data-lang="de">Sendet persönliche E-Mails</span>
+          <span data-lang="es">Envía emails personales</span>
+          <span data-lang="it">Invia email personali</span>
+          <span data-lang="pt">Envia emails pessoais</span>
+          <span data-lang="sr">Šalje lične emailove</span>
+        </div>
+        <span class="step-arrow">→</span>
+        <div class="step">
+          <div class="step-num">3</div>
+          <span data-lang="en">All in your Google Sheets</span>
+          <span data-lang="ru">Всё в вашем Google Sheets</span>
+          <span data-lang="fr">Tout dans votre Google Sheets</span>
+          <span data-lang="de">Alles in Ihrem Google Sheets</span>
+          <span data-lang="es">Todo en tu Google Sheets</span>
+          <span data-lang="it">Tutto nel tuo Google Sheets</span>
+          <span data-lang="pt">Tudo no seu Google Sheets</span>
+          <span data-lang="sr">Sve u vašem Google Sheets</span>
+        </div>
+      </div>
+      <div class="product-bottom">
+        <div class="product-price">
+          <div>
+            <div class="price-setup">
+              <span data-lang="en">€149 once to set up · then</span>
+              <span data-lang="fr">€149 une fois · puis</span>
+              <span data-lang="de">€149 einmalig · dann</span>
+              <span data-lang="es">€149 una vez · luego</span>
+              <span data-lang="it">€149 una volta · poi</span>
+              <span data-lang="pt">€149 uma vez · depois</span>
+              <span data-lang="ru">€149 разово за настройку · потом</span>
+              <span data-lang="sr">€149 jednokratno · zatim</span>
+            </div>
+            <div><span class="price-main">€99</span><span class="price-period">/month</span></div>
+          </div>
+        </div>
+        <a href="#contact" class="btn-card">
+          <span data-lang="en">Get this</span>
+          <span data-lang="fr">Obtenir</span>
+          <span data-lang="de">Holen</span>
+          <span data-lang="es">Obtener</span>
+          <span data-lang="it">Ottieni</span>
+          <span data-lang="pt">Obter</span>
+          <span data-lang="ru">Получить</span>
+          <span data-lang="sr">Uzmi</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- AI Deal Coach -->
+    <div class="product-card">
+      <div class="product-top">
+        <div class="product-name">AI Deal Coach</div>
+      </div>
+      <p class="product-desc">
+        <span data-lang="en">Tell AI about a client — who they are, what they need, what they said. AI analyzes and gives you the exact script: what to say, how to approach them, when to reach out. Close more deals.</span>
+        <span data-lang="fr">Parlez à l'IA d'un client — qui il est, ce dont il a besoin, ce qu'il a dit. L'IA analyse et vous donne le script exact: quoi dire, comment l'approcher, quand le contacter.</span>
+        <span data-lang="de">Erzählen Sie der KI von einem Kunden. Die KI analysiert und gibt Ihnen das genaue Skript: Was Sie sagen sollen, wie Sie vorgehen sollen, wann Sie sich melden sollen.</span>
+        <span data-lang="es">Cuéntale a la IA sobre un cliente. La IA analiza y te da el script exacto: qué decir, cómo acercarte, cuándo contactarlos.</span>
+        <span data-lang="it">Parla all'AI di un cliente. L'AI analizza e ti dà lo script esatto: cosa dire, come approcciarti, quando contattarli.</span>
+        <span data-lang="pt">Conte à IA sobre um cliente. A IA analisa e te dá o script exato: o que dizer, como abordar, quando entrar em contato.</span>
+        <span data-lang="ru">Расскажите ИИ о клиенте — кто он, что ему нужно, что сказал. ИИ анализирует и даёт точный скрипт: что говорить, как подойти, когда писать. Закрывайте больше сделок.</span>
+        <span data-lang="sr">Recite AI o klijentu. AI analizira i daje vam tačan skript: šta reći, kako pristupiti, kada se javiti.</span>
+      </p>
+      <div class="product-steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <span data-lang="en">You describe the client</span>
+          <span data-lang="ru">Вы описываете клиента</span>
+          <span data-lang="fr">Vous décrivez le client</span>
+          <span data-lang="de">Sie beschreiben den Kunden</span>
+          <span data-lang="es">Describes al cliente</span>
+          <span data-lang="it">Descrivi il cliente</span>
+          <span data-lang="pt">Você descreve o cliente</span>
+          <span data-lang="sr">Opisujete klijenta</span>
+        </div>
+        <span class="step-arrow">→</span>
+        <div class="step">
+          <div class="step-num">2</div>
+          <span data-lang="en">AI analyzes the situation</span>
+          <span data-lang="ru">ИИ анализирует ситуацию</span>
+          <span data-lang="fr">L'IA analyse la situation</span>
+          <span data-lang="de">KI analysiert die Situation</span>
+          <span data-lang="es">IA analiza la situación</span>
+          <span data-lang="it">AI analizza la situazione</span>
+          <span data-lang="pt">AI analisa a situação</span>
+          <span data-lang="sr">AI analizira situaciju</span>
+        </div>
+        <span class="step-arrow">→</span>
+        <div class="step">
+          <div class="step-num">3</div>
+          <span data-lang="en">You get the exact script</span>
+          <span data-lang="ru">Вы получаете точный скрипт</span>
+          <span data-lang="fr">Vous obtenez le script exact</span>
+          <span data-lang="de">Sie erhalten das genaue Skript</span>
+          <span data-lang="es">Obtienes el script exacto</span>
+          <span data-lang="it">Ottieni lo script esatto</span>
+          <span data-lang="pt">Você recebe o script exato</span>
+          <span data-lang="sr">Dobijate tačan skript</span>
+        </div>
+      </div>
+      <div class="product-bottom">
+        <div class="product-price">
+          <div>
+            <div class="price-setup">
+              <span data-lang="en">€149 once to set up · then</span>
+              <span data-lang="fr">€149 une fois · puis</span>
+              <span data-lang="de">€149 einmalig · dann</span>
+              <span data-lang="es">€149 una vez · luego</span>
+              <span data-lang="it">€149 una volta · poi</span>
+              <span data-lang="pt">€149 uma vez · depois</span>
+              <span data-lang="ru">€149 разово за настройку · потом</span>
+              <span data-lang="sr">€149 jednokratno · zatim</span>
+            </div>
+            <div><span class="price-main">€99</span><span class="price-period">/month</span></div>
+          </div>
+        </div>
+        <a href="#contact" class="btn-card">
+          <span data-lang="en">Get this</span>
+          <span data-lang="fr">Obtenir</span>
+          <span data-lang="de">Holen</span>
+          <span data-lang="es">Obtener</span>
+          <span data-lang="it">Ottieni</span>
+          <span data-lang="pt">Obter</span>
+          <span data-lang="ru">Получить</span>
+          <span data-lang="sr">Uzmi</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- All-in -->
+    <div class="product-card featured">
+      <div class="product-top">
+        <div class="product-name">All-in Package</div>
+        <div class="product-badge featured-badge">⭐ Best value</div>
+      </div>
+      <p class="product-desc">
+        <span data-lang="en">All three AI products in one. Plus a weekly report every Friday: who's hot, who to call, what to do this week. Your complete AI sales department for less than hiring one person.</span>
+        <span data-lang="fr">Les trois produits IA en un. Plus un rapport hebdomadaire chaque vendredi: qui est chaud, qui appeler, quoi faire cette semaine.</span>
+        <span data-lang="de">Alle drei KI-Produkte in einem. Plus ein wöchentlicher Bericht jeden Freitag: Wer ist heiß, wen anrufen, was diese Woche zu tun ist.</span>
+        <span data-lang="es">Los tres productos de IA en uno. Más un informe semanal cada viernes: quién está caliente, a quién llamar, qué hacer esta semana.</span>
+        <span data-lang="it">Tutti e tre i prodotti AI in uno. Più un report settimanale ogni venerdì: chi è caldo, chi chiamare, cosa fare questa settimana.</span>
+        <span data-lang="pt">Todos os três produtos de IA em um. Mais um relatório semanal toda sexta-feira: quem está quente, quem ligar, o que fazer esta semana.</span>
+        <span data-lang="ru">Все три ИИ продукта в одном. Плюс еженедельный отчёт каждую пятницу: кто горячий, кому звонить, что делать на этой неделе. Полный ИИ отдел продаж дешевле чем нанять одного человека.</span>
+        <span data-lang="sr">Sva tri AI proizvoda u jednom. Plus sedmični izveštaj svakog petka.</span>
+      </p>
+      <div class="product-bottom">
+        <div class="product-price">
+          <div>
+            <div class="price-setup">
+              <span data-lang="en">€249 once to set up · then</span>
+              <span data-lang="fr">€249 une fois · puis</span>
+              <span data-lang="de">€249 einmalig · dann</span>
+              <span data-lang="es">€249 una vez · luego</span>
+              <span data-lang="it">€249 una volta · poi</span>
+              <span data-lang="pt">€249 uma vez · depois</span>
+              <span data-lang="ru">€249 разово за настройку · потом</span>
+              <span data-lang="sr">€249 jednokratno · zatim</span>
+            </div>
+            <div><span class="price-main">€199</span><span class="price-period">/month</span></div>
+          </div>
+        </div>
+        <a href="#contact" class="btn-card">
+          <span data-lang="en">Get All-in</span>
+          <span data-lang="fr">Tout obtenir</span>
+          <span data-lang="de">Alles holen</span>
+          <span data-lang="es">Obtener todo</span>
+          <span data-lang="it">Ottieni tutto</span>
+          <span data-lang="pt">Obter tudo</span>
+          <span data-lang="ru">Взять всё</span>
+          <span data-lang="sr">Uzmi sve</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Coming Soon -->
+    <div class="coming-soon-card">
+      <div class="coming-soon-left">
+        <h3>🎙 Voice Agent</h3>
+        <p data-lang="en">AI that answers calls and talks to your clients automatically.</p>
+        <p data-lang="fr">IA qui répond aux appels et parle à vos clients automatiquement.</p>
+        <p data-lang="de">KI, die Anrufe entgegennimmt und automatisch mit Ihren Kunden spricht.</p>
+        <p data-lang="es">IA que responde llamadas y habla con tus clientes automáticamente.</p>
+        <p data-lang="it">AI che risponde alle chiamate e parla con i tuoi clienti automaticamente.</p>
+        <p data-lang="pt">IA que atende chamadas e fala com seus clientes automaticamente.</p>
+        <p data-lang="ru">ИИ который отвечает на звонки и разговаривает с вашими клиентами автоматически.</p>
+        <p data-lang="sr">AI koji odgovara na pozive i automatski razgovara s vašim klijentima.</p>
+      </div>
+      <div class="soon-badge">COMING SOON</div>
+    </div>
+  </div>
+
+  <!-- WEB SERVICES -->
+  <div class="products-section">
+    <div class="products-section-title">
+      <span data-lang="en">— Web Services</span>
+      <span data-lang="fr">— Services Web</span>
+      <span data-lang="de">— Webdienste</span>
+      <span data-lang="es">— Servicios Web</span>
+      <span data-lang="it">— Servizi Web</span>
+      <span data-lang="pt">— Serviços Web</span>
+      <span data-lang="ru">— Веб услуги</span>
+      <span data-lang="sr">— Web Usluge</span>
+    </div>
+
+    <div class="product-card">
+      <div class="product-top">
+        <div class="product-name">
+          <span data-lang="en">Professional Website</span>
+          <span data-lang="fr">Site Web Professionnel</span>
+          <span data-lang="de">Professionelle Website</span>
+          <span data-lang="es">Sitio Web Profesional</span>
+          <span data-lang="it">Sito Web Professionale</span>
+          <span data-lang="pt">Site Profissional</span>
+          <span data-lang="ru">Профессиональный сайт</span>
+          <span data-lang="sr">Profesionalni Sajt</span>
+        </div>
+      </div>
+      <p class="product-desc">
+        <span data-lang="en">A clean, fast, professional website for your business. Ready in 3 days. Mobile-friendly, looks great, builds trust with your clients.</span>
+        <span data-lang="fr">Un site web propre, rapide et professionnel pour votre entreprise. Prêt en 3 jours.</span>
+        <span data-lang="de">Eine saubere, schnelle, professionelle Website für Ihr Unternehmen. Bereit in 3 Tagen.</span>
+        <span data-lang="es">Un sitio web limpio, rápido y profesional para tu negocio. Listo en 3 días.</span>
+        <span data-lang="it">Un sito web pulito, veloce e professionale per la tua azienda. Pronto in 3 giorni.</span>
+        <span data-lang="pt">Um site limpo, rápido e profissional para seu negócio. Pronto em 3 dias.</span>
+        <span data-lang="ru">Чистый, быстрый, профессиональный сайт для вашего бизнеса. Готов за 3 дня. Мобильная версия, отличный вид, доверие клиентов.</span>
+        <span data-lang="sr">Čist, brz, profesionalni sajt za vaš posao. Gotov za 3 dana.</span>
+      </p>
+      <div class="product-bottom">
+        <div class="product-price">
+          <span class="price-one-time">€299</span>
+          <span class="price-period" style="margin-left:8px">
+            <span data-lang="en">one time</span>
+            <span data-lang="fr">une fois</span>
+            <span data-lang="de">einmalig</span>
+            <span data-lang="es">una vez</span>
+            <span data-lang="it">una volta</span>
+            <span data-lang="pt">uma vez</span>
+            <span data-lang="ru">разово</span>
+            <span data-lang="sr">jednokratno</span>
+          </span>
+        </div>
+        <a href="#contact" class="btn-card">
+          <span data-lang="en">Get this</span>
+          <span data-lang="fr">Obtenir</span>
+          <span data-lang="de">Holen</span>
+          <span data-lang="es">Obtener</span>
+          <span data-lang="it">Ottieni</span>
+          <span data-lang="pt">Obter</span>
+          <span data-lang="ru">Получить</span>
+          <span data-lang="sr">Uzmi</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-top">
+        <div class="product-name">
+          <span data-lang="en">Website + Lead Capture</span>
+          <span data-lang="fr">Site Web + Capture de Leads</span>
+          <span data-lang="de">Website + Lead-Erfassung</span>
+          <span data-lang="es">Sitio Web + Captura de Leads</span>
+          <span data-lang="it">Sito Web + Acquisizione Lead</span>
+          <span data-lang="pt">Site + Captura de Leads</span>
+          <span data-lang="ru">Сайт + сбор заявок</span>
+          <span data-lang="sr">Sajt + Prikupljanje Leadova</span>
+        </div>
+      </div>
+      <p class="product-desc">
+        <span data-lang="en">Everything in the Website package, plus every inquiry from your contact form automatically goes into a Google Sheets table. Never lose a lead from your website again.</span>
+        <span data-lang="fr">Tout dans le package Site Web, plus chaque demande de votre formulaire de contact va automatiquement dans un tableau Google Sheets.</span>
+        <span data-lang="de">Alles im Website-Paket, plus jede Anfrage aus Ihrem Kontaktformular geht automatisch in eine Google Sheets-Tabelle.</span>
+        <span data-lang="es">Todo en el paquete de sitio web, más cada consulta de tu formulario de contacto va automáticamente a una tabla de Google Sheets.</span>
+        <span data-lang="it">Tutto nel pacchetto sito web, più ogni richiesta dal modulo di contatto va automaticamente in un foglio Google Sheets.</span>
+        <span data-lang="pt">Tudo no pacote de site, mais cada consulta do seu formulário de contato vai automaticamente para uma planilha do Google Sheets.</span>
+        <span data-lang="ru">Всё из пакета Сайт плюс каждая заявка с контактной формы автоматически попадает в Google Sheets. Больше никаких потерянных заявок с сайта.</span>
+        <span data-lang="sr">Sve iz paketa Sajt, plus svaki upit iz kontakt forme automatski ide u Google Sheets tabelu.</span>
+      </p>
+      <div class="product-bottom">
+        <div class="product-price">
+          <span class="price-one-time">€399</span>
+          <span class="price-period" style="margin-left:8px">
+            <span data-lang="en">one time</span>
+            <span data-lang="fr">une fois</span>
+            <span data-lang="de">einmalig</span>
+            <span data-lang="es">una vez</span>
+            <span data-lang="it">una volta</span>
+            <span data-lang="pt">uma vez</span>
+            <span data-lang="ru">разово</span>
+            <span data-lang="sr">jednokratno</span>
+          </span>
+        </div>
+        <a href="#contact" class="btn-card">
+          <span data-lang="en">Get this</span>
+          <span data-lang="fr">Obtenir</span>
+          <span data-lang="de">Holen</span>
+          <span data-lang="es">Obtener</span>
+          <span data-lang="it">Ottieni</span>
+          <span data-lang="pt">Obter</span>
+          <span data-lang="ru">Получить</span>
+          <span data-lang="sr">Uzmi</span>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">
+    <span data-lang="en">Get Started</span>
+    <span data-lang="fr">Commencer</span>
+    <span data-lang="de">Loslegen</span>
+    <span data-lang="es">Empezar</span>
+    <span data-lang="it">Inizia</span>
+    <span data-lang="pt">Começar</span>
+    <span data-lang="ru">Начать</span>
+    <span data-lang="sr">Počni</span>
+  </div>
+  <h2>
+    <span data-lang="en">Let's talk about your business.</span>
+    <span data-lang="fr">Parlons de votre entreprise.</span>
+    <span data-lang="de">Lassen Sie uns über Ihr Unternehmen sprechen.</span>
+    <span data-lang="es">Hablemos de tu negocio.</span>
+    <span data-lang="it">Parliamo della tua azienda.</span>
+    <span data-lang="pt">Vamos falar sobre seu negócio.</span>
+    <span data-lang="ru">Давайте поговорим о вашем бизнесе.</span>
+    <span data-lang="sr">Razgovarajmo o vašem poslovanju.</span>
+  </h2>
+  <p>
+    <span data-lang="en">Fill out the form and we'll get back to you within 24 hours. Free consultation, no commitment.</span>
+    <span data-lang="fr">Remplissez le formulaire et nous vous répondrons dans les 24 heures. Consultation gratuite, sans engagement.</span>
+    <span data-lang="de">Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden. Kostenlose Beratung, keine Verpflichtung.</span>
+    <span data-lang="es">Rellena el formulario y te responderemos en 24 horas. Consulta gratuita, sin compromiso.</span>
+    <span data-lang="it">Compila il modulo e ti risponderemo entro 24 ore. Consulenza gratuita, nessun impegno.</span>
+    <span data-lang="pt">Preencha o formulário e retornaremos em 24 horas. Consulta gratuita, sem compromisso.</span>
+    <span data-lang="ru">Заполните форму и мы ответим в течение 24 часов. Бесплатная консультация, никаких обязательств.</span>
+    <span data-lang="sr">Popunite formular i odgovorićemo vam u roku od 24 sata. Besplatne konsultacije.</span>
+  </p>
+
+  <form class="form" id="contactForm">
+    <div class="form-row">
+      <input type="text" id="name" placeholder="Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+    </div>
+    <input type="text" id="business" placeholder="Your business">
+    <select id="product">
+      <option value="">
+        Select a service...
+      </option>
+      <option value="AI Follow-up">AI Follow-up — €149 + €99/mo</option>
+      <option value="AI Sales Agent">AI Sales Agent — €149 + €99/mo</option>
+      <option value="AI Deal Coach">AI Deal Coach — €149 + €99/mo</option>
+      <option value="All-in">All-in Package — €249 + €199/mo</option>
+      <option value="Website">Website — €299</option>
+      <option value="Website + Lead Capture">Website + Lead Capture — €399</option>
+      <option value="Not sure">Not sure yet</option>
+    </select>
+    <textarea id="message" placeholder="Tell us about your business and what you need..."></textarea>
+    <button type="submit" class="form-submit">
+      <span data-lang="en">Send message →</span>
+      <span data-lang="fr">Envoyer →</span>
+      <span data-lang="de">Senden →</span>
+      <span data-lang="es">Enviar →</span>
+      <span data-lang="it">Invia →</span>
+      <span data-lang="pt">Enviar →</span>
+      <span data-lang="ru">Отправить →</span>
+      <span data-lang="sr">Pošalji →</span>
+    </button>
+  </form>
+
+  <div class="success-msg" id="successMsg">
+    ✅ <span data-lang="en">Message sent! We'll get back to you within 24 hours.</span>
+    <span data-lang="fr">Message envoyé! Nous vous répondrons dans 24 heures.</span>
+    <span data-lang="de">Nachricht gesendet! Wir melden uns innerhalb von 24 Stunden.</span>
+    <span data-lang="es">¡Mensaje enviado! Te responderemos en 24 horas.</span>
+    <span data-lang="it">Messaggio inviato! Ti risponderemo entro 24 ore.</span>
+    <span data-lang="pt">Mensagem enviada! Responderemos em 24 horas.</span>
+    <span data-lang="ru">Сообщение отправлено! Ответим в течение 24 часов.</span>
+    <span data-lang="sr">Poruka poslata! Odgovorićemo vam u roku od 24 sata.</span>
+  </div>
+
+  <div class="contact-email">
+    <span data-lang="en">Or email us directly:</span>
+    <span data-lang="fr">Ou envoyez-nous un e-mail:</span>
+    <span data-lang="de">Oder schreiben Sie uns direkt:</span>
+    <span data-lang="es">O escríbenos directamente:</span>
+    <span data-lang="it">O scrivici direttamente:</span>
+    <span data-lang="pt">Ou nos envie um e-mail:</span>
+    <span data-lang="ru">Или напишите нам напрямую:</span>
+    <span data-lang="sr">Ili nam pišite direktno:</span>
+    <a href="mailto:m71051705@gmail.com"> m71051705@gmail.com</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <div class="footer-brand">Neuro<span>Flow</span> Systems</div>
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#why-us">Why Us</a>
-    <a href="#coming-soon">Coming Soon</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <div class="footer-copy">© 2026 NeuroFlow Systems. All rights reserved.</div>
+  <div class="logo">Neuro<span>Flow</span> Systems</div>
+  <p>© 2025 NeuroFlow Systems. All rights reserved.</p>
 </footer>
 
 <script>
-window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>24)});
-function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');document.getElementById('ham').classList.toggle('open')}
-function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');document.getElementById('ham').classList.remove('open')}
-function scrollContact(){document.getElementById('contact').scrollIntoView({behavior:'smooth'})}
+  // LANGUAGE SWITCHER
+  let currentLang = 'en';
 
-document.getElementById('ctForm').addEventListener('submit',async function(e){
-  e.preventDefault();
-  const fname=document.getElementById('fname');
-  const fphone=document.getElementById('fphone');
-  const fmsg=document.getElementById('fmsg');
-  let ok=true;
-  [fname,fphone,fmsg].forEach(f=>f.classList.remove('err'));
-  document.querySelectorAll('.f-err').forEach(el=>el.classList.remove('show'));
-  if(!fname.value.trim()){fname.classList.add('err');document.getElementById('fnameErr').classList.add('show');ok=false}
-  if(!fphone.value.trim()||fphone.value.trim().length<7){fphone.classList.add('err');document.getElementById('fphoneErr').classList.add('show');ok=false}
-  if(!fmsg.value.trim()){fmsg.classList.add('err');document.getElementById('fmsgErr').classList.add('show');ok=false}
-  if(!ok)return;
-  const btn=document.getElementById('fsubmit');
-  btn.textContent='Sending...';btn.disabled=true;
-  const payload={name:fname.value.trim(),phone:fphone.value.trim(),service:document.getElementById('fservice').value,message:fmsg.value.trim(),time:new Date().toISOString()};
-  try{
-    const res=await fetch('https://neuroflow1234431.app.n8n.cloud/webhook/e05cefde-86b4-4d38-8404-b14ea11115a2',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-    if(!res.ok)throw new Error();
-    document.getElementById('formContent').style.display='none';
-    document.getElementById('fSuccess').classList.add('show');
-  }catch(err){
-    btn.textContent='Send Message →';btn.disabled=false;
-    alert('Something went wrong. Please try again or contact us directly.');
+  function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.style.display = 'none';
+    });
+    document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+      el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
+    });
   }
-});
-</script>
-</body>
-</html>
-t Websites & Automation</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#1E5BFF;--blue-dark:#1245d4;--blue-light:#edf1ff;--blue-xlight:#f5f7ff;--white:#ffffff;--ink:#07091a;--muted:#64748b;--border:rgba(30,91,255,0.1);--border2:rgba(30,91,255,0.18);--ease:cubic-bezier(0.22,1,0.36,1)}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-.btn{display:inline-flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:500;border:none;cursor:pointer;text-decoration:none;transition:all 0.22s var(--ease);white-space:nowrap}
-.btn-sm{font-size:0.85rem;padding:0 18px;height:38px;border-radius:8px}
-.btn-md{font-size:0.92rem;padding:0 24px;height:46px;border-radius:10px}
-.btn-lg{font-size:1rem;padding:0 36px;height:54px;border-radius:12px}
-.btn-primary{background:var(--blue);color:#fff;box-shadow:0 4px 18px rgba(30,91,255,0.3)}
-.btn-primary:hover{background:var(--blue-dark);box-shadow:0 6px 28px rgba(30,91,255,0.4);transform:translateY(-1px)}
-.btn-ghost{background:transparent;color:var(--muted);border:1.5px solid var(--border2)}
-.btn-ghost:hover{color:var(--ink);border-color:var(--blue);background:var(--blue-light);transform:translateY(-1px)}
-.btn-white{background:#fff;color:var(--blue);font-weight:600;box-shadow:0 4px 24px rgba(0,0,0,0.14)}
-.btn-white:hover{background:#f0f4ff;transform:translateY(-2px)}
-.btn-ghost-inv{background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.25)}
-.btn-ghost-inv:hover{background:rgba(255,255,255,0.2);transform:translateY(-1px)}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);box-shadow:0 2px 32px rgba(30,91,255,0.07)}
-.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.18rem;letter-spacing:-0.03em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:8px}
-.nav-logo-icon{width:28px;height:28px;border-radius:7px;background:var(--blue);display:flex;align-items:center;justify-content:center}
-.nav-logo span{color:var(--blue)}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{font-size:0.875rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s}
-.nav-links a:hover{color:var(--ink)}
-.nav-right{display:flex;gap:10px;align-items:center}
-.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:none;background:none}
-.ham span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:all 0.3s}
-.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:12px 24px 20px;z-index:199;box-shadow:0 8px 32px rgba(30,91,255,0.08)}
-.mobile-menu.open{display:block}
-.mobile-menu a{display:block;padding:13px 0;font-size:1rem;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border)}
-.mobile-menu .btn{width:100%;margin-top:14px;height:50px;font-size:1rem}
+  // FORM SUBMISSION
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-/* HERO */
-.hero{min-height:100vh;padding:140px 6% 100px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(30,91,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(30,91,255,0.06) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 70% 80% at 55% 40%,black 0%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 70% 80% at 55% 40%,black 0%,transparent 70%)}
-.hero-glow{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
-.hero-glow-1{width:600px;height:600px;background:rgba(30,91,255,0.09);right:-100px;top:-100px}
-.hero-glow-2{width:400px;height:400px;background:rgba(30,91,255,0.05);left:10%;bottom:0}
-.hero-inner{position:relative;z-index:1;max-width:800px}
-.hero-pill{display:inline-flex;align-items:center;gap:8px;background:var(--blue-light);border:1px solid rgba(30,91,255,0.2);color:var(--blue);font-size:0.78rem;font-weight:600;padding:5px 14px;border-radius:100px;margin-bottom:30px;letter-spacing:0.04em;text-transform:uppercase}
-.pill-dot{width:6px;height:6px;border-radius:50%;background:var(--blue)}
-.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,5.5vw,4.6rem);font-weight:800;line-height:1.04;letter-spacing:-0.04em;color:var(--ink);margin-bottom:24px}
-.hero h1 em{font-style:normal;color:var(--blue);position:relative;white-space:nowrap}
-.hero h1 em::after{content:'';position:absolute;bottom:2px;left:0;right:0;height:3px;background:var(--blue);opacity:0.25;border-radius:2px}
-.hero-p{font-size:1.1rem;color:var(--muted);line-height:1.7;max-width:500px;margin-bottom:40px;font-weight:400}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-.hero-stats{display:flex;gap:0;margin-top:56px;border-top:1px solid var(--border);padding-top:36px;max-width:500px}
-.stat{flex:1;padding-right:32px;position:relative}
-.stat:not(:last-child)::after{content:'';position:absolute;right:16px;top:4px;bottom:4px;width:1px;background:var(--border)}
-.stat-n{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;letter-spacing:-0.05em;color:var(--ink);line-height:1}
-.stat-n b{color:var(--blue);font-weight:800}
-.stat-l{font-size:0.78rem;color:var(--muted);margin-top:4px}
+    const data = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      business: document.getElementById('business').value,
+      product: document.getElementById('product').value,
+      message: document.getElementById('message').value,
+      timestamp: new Date().toISOString()
+    };
 
-/* SECTIONS */
-.section{padding:96px 6%}
-.section-alt{background:var(--blue-xlight)}
-.s-label{display:inline-flex;align-items:center;gap:8px;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
-.s-label::before{content:'';width:20px;height:2px;background:var(--blue);border-radius:1px}
-.s-title{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:800;letter-spacing:-0.04em;line-height:1.1;color:var(--ink);margin-bottom:16px}
-.s-sub{font-size:1rem;color:var(--muted);line-height:1.7;max-width:480px}
-.s-head{margin-bottom:56px}
+    try {
+      await fetch('https://neuroflow1234431.app.n8n.cloud/webhook/e05cefde-86b4-4d38-8404-b14ea11115a2', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    } catch(err) {
+      console.log('Webhook error:', err);
+    }
 
-/* SERVICES */
-.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.srv-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:36px 32px;position:relative;overflow:hidden;transition:transform 0.28s var(--ease),box-shadow 0.28s var(--ease),border-color 0.28s;cursor:default}
-.srv-card:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(30,91,255,0.13);border-color:rgba(30,91,255,0.3)}
-.srv-card.featured{background:var(--blue);border-color:var(--blue);box-shadow:0 16px 48px rgba(30,91,255,0.32)}
-.srv-card.featured:hover{transform:translateY(-8px);box-shadow:0 28px 72px rgba(30,91,255,0.45)}
-.srv-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px}
-.srv-icon{width:44px;height:44px;border-radius:11px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:1.3rem}
-.featured .srv-icon{background:rgba(255,255,255,0.15)}
-.srv-popular{font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:rgba(255,255,255,0.2);color:#fff;padding:4px 10px;border-radius:100px}
-.srv-card h3{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:10px;color:var(--ink)}
-.featured h3{color:#fff}
-.srv-card p{font-size:0.875rem;line-height:1.65;color:var(--muted);margin-bottom:28px}
-.featured p{color:rgba(255,255,255,0.72)}
-.srv-price{display:flex;align-items:baseline;gap:4px;margin-bottom:6px}
-.srv-price-num{font-family:'Syne',sans-serif;font-size:2.6rem;font-weight:800;letter-spacing:-0.05em;color:var(--ink);line-height:1}
-.featured .srv-price-num{color:#fff}
-.srv-price-mo{font-size:0.88rem;color:var(--muted)}
-.featured .srv-price-mo{color:rgba(255,255,255,0.6)}
-.srv-price-note{font-size:0.78rem;color:var(--muted);margin-bottom:28px}
-.featured .srv-price-note{color:rgba(255,255,255,0.55)}
-.srv-features{list-style:none;margin-bottom:32px;display:flex;flex-direction:column;gap:9px}
-.srv-features li{display:flex;align-items:flex-start;gap:9px;font-size:0.875rem;color:var(--muted);line-height:1.5}
-.featured .srv-features li{color:rgba(255,255,255,0.8)}
-.srv-features li::before{content:'';width:17px;height:17px;border-radius:50%;flex-shrink:0;margin-top:1px;background:var(--blue-light) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6l2.5 2.5 4.5-5' stroke='%231E5BFF' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat}
-.featured .srv-features li::before{background-color:rgba(255,255,255,0.18);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6l2.5 2.5 4.5-5' stroke='white' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
-.srv-btn{width:100%;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;height:46px;border-radius:10px;transition:all 0.22s var(--ease);background:var(--blue-light);color:var(--blue)}
-.srv-btn:hover{background:var(--blue);color:#fff;transform:translateY(-1px)}
-.featured .srv-btn{background:#fff;color:var(--blue);font-weight:600}
-.featured .srv-btn:hover{background:rgba(255,255,255,0.88)}
+    document.getElementById('contactForm').style.display = 'none';
+    const msg = document.getElementById('successMsg');
+    msg.style.display = 'block';
+    msg.querySelectorAll('[data-lang]').forEach(el => el.style.display = 'none');
+    msg.querySelectorAll(`[data-lang="${currentLang}"]`).forEach(el => el.style.display = 'inline');
+  });
 
-/* WHY US */
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border:1px solid var(--border);border-radius:18px;overflow:hidden}
-.why-card{padding:36px 28px;background:#fff;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:background 0.22s}
-.why-card:hover{background:var(--blue-xlight)}
-.why-card:nth-child(3n){border-right:none}
-.why-card:nth-child(n+4){border-bottom:none}
-.why-no{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:var(--blue);opacity:0.1;letter-spacing:-0.06em;line-height:1;margin-bottom:20px}
-.why-card h4{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:10px;color:var(--ink)}
-.why-card p{font-size:0.875rem;color:var(--muted);line-height:1.65}
-
-/* COMING SOON */
-.cs-card{border:1px solid var(--border);border-radius:22px;overflow:hidden;display:grid;grid-template-columns:1fr 340px}
-.cs-left{padding:56px 52px;background:#fff}
-.cs-badge{display:inline-flex;align-items:center;gap:8px;background:#fffbeb;border:1px solid #fde68a;color:#b45309;font-size:0.72rem;font-weight:700;padding:5px 13px;border-radius:100px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px}
-.cs-badge-dot{width:6px;height:6px;border-radius:50%;background:#f59e0b}
-.cs-left h3{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;letter-spacing:-0.04em;margin-bottom:14px;color:var(--ink);line-height:1.1}
-.cs-left>p{font-size:0.95rem;color:var(--muted);line-height:1.7;margin-bottom:30px}
-.cs-feats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.cs-feat{display:flex;align-items:center;gap:9px;font-size:0.875rem;color:var(--ink)}
-.cs-feat-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0}
-.cs-right{background:var(--blue);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.cs-icon{font-size:5rem;position:relative;z-index:1}
-.cs-notify{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:0.75rem;font-weight:500;padding:7px 14px;border-radius:100px;white-space:nowrap;z-index:1}
-
-/* CTA */
-.cta-section{padding:0 6% 96px}
-.cta-wrap{background:var(--blue);border-radius:22px;padding:64px 56px;display:flex;align-items:center;justify-content:space-between;gap:40px;position:relative;overflow:hidden;flex-wrap:wrap}
-.cta-left{position:relative;z-index:1}
-.cta-left h2{font-family:'Syne',sans-serif;font-size:clamp(1.5rem,2.5vw,2.1rem);font-weight:800;letter-spacing:-0.04em;color:#fff;max-width:520px;line-height:1.2;margin-bottom:10px}
-.cta-left p{color:rgba(255,255,255,0.65);font-size:0.95rem}
-.cta-actions{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:1}
-
-/* CONTACT */
-#contact{background:#fff}
-.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:72px;align-items:start}
-.ct-left h3{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:-0.04em;margin-bottom:14px}
-.ct-left>p{font-size:0.95rem;color:var(--muted);line-height:1.7;margin-bottom:36px}
-.ct-details{display:flex;flex-direction:column;gap:14px;margin-bottom:36px}
-.ct-detail{display:flex;align-items:center;gap:13px;font-size:0.9rem;color:var(--ink)}
-.ct-detail a{color:var(--ink);text-decoration:none;transition:color 0.2s}
-.ct-detail a:hover{color:var(--blue)}
-.ct-detail-icon{width:40px;height:40px;border-radius:10px;background:var(--blue-light);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-.ct-hours{background:var(--blue-xlight);border:1px solid var(--border);border-radius:12px;padding:18px 20px}
-.ct-hours p{font-size:0.82rem;color:var(--muted);line-height:1.6}
-.ct-hours strong{color:var(--ink);font-weight:600;display:block;margin-bottom:4px;font-size:0.88rem}
-.ct-form-wrap{background:var(--blue-xlight);border:1px solid var(--border);border-radius:22px;padding:44px 40px}
-.ct-form-wrap h4{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:28px;color:var(--ink)}
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.f-group{margin-bottom:18px}
-.f-group label{display:block;font-size:0.8rem;font-weight:600;color:var(--ink);margin-bottom:7px}
-.f-group input,.f-group textarea,.f-group select{width:100%;font-family:'DM Sans',sans-serif;font-size:0.92rem;color:var(--ink);background:#fff;border:1.5px solid var(--border2);border-radius:10px;padding:12px 15px;outline:none;appearance:none;transition:border-color 0.2s,box-shadow 0.2s}
-.f-group textarea{resize:vertical;min-height:118px}
-.f-group input:focus,.f-group textarea:focus,.f-group select:focus{border-color:var(--blue);box-shadow:0 0 0 3.5px rgba(30,91,255,0.1)}
-.f-group input.err,.f-group textarea.err{border-color:#ef4444}
-.f-err{font-size:0.76rem;color:#ef4444;margin-top:5px;display:none}
-.f-err.show{display:block}
-.f-submit{width:100%;margin-top:4px;height:52px;border-radius:11px;font-size:0.97rem}
-.f-success{display:none;text-align:center;padding:48px 20px}
-.f-success.show{display:block}
-.f-success-icon{width:68px;height:68px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 22px}
-.f-success h4{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:10px}
-.f-success p{color:var(--muted);font-size:0.92rem;line-height:1.6}
-
-/* FOOTER */
-footer{background:var(--ink);padding:48px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.footer-brand{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:#fff;display:flex;align-items:center;gap:8px}
-.footer-brand span{color:var(--blue)}
-footer nav{display:flex;gap:24px}
-footer nav a{font-size:0.85rem;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s}
-footer nav a:hover{color:#fff}
-.footer-copy{font-size:0.82rem;color:rgba(255,255,255,0.3)}
-
-/* RESPONSIVE */
-@media(max-width:1024px){.srv-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto}.why-grid{grid-template-columns:1fr 1fr}.cs-card{grid-template-columns:1fr}.cs-right{min-height:200px}.contact-grid{grid-template-columns:1fr;gap:40px}}
-@media(max-width:768px){nav{padding:0 20px}.nav-links{display:none}.nav-right .btn-ghost{display:none}.ham{display:flex}.hero{padding:110px 20px 70px}.section{padding:70px 20px}.cta-section{padding:0 20px 70px}.why-grid{grid-template-columns:1fr;border-radius:14px}.why-card{border-right:none!important}.cs-left{padding:36px 28px}.cs-feats{grid-template-columns:1fr}.cta-wrap{padding:40px 28px}.ct-form-wrap{padding:30px 22px}.f-row{grid-template-columns:1fr}footer{flex-direction:column;align-items:flex-start;gap:14px}footer nav{flex-wrap:wrap;gap:16px}}
-</style>
-</head>
-<body>
-
-<nav id="nav">
-  <a href="#" class="nav-logo">
-    <div class="nav-logo-icon">
-      <svg viewBox="0 0 24 24" fill="none" style="width:14px;height:14px">
-        <path d="M12 4L20 8V16L12 20L4 16V8L12 4Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M12 4V20M4 8L20 16M20 8L4 16" stroke="white" stroke-width="1.2" stroke-opacity="0.6"/>
-      </svg>
-    </div>
-    Neuro<span>Flow</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#why-us">Why Us</a></li>
-    <li><a href="#coming-soon">Coming Soon</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div class="nav-right">
-    <a href="#contact" class="btn btn-ghost btn-sm">Get in Touch</a>
-    <a href="#contact" class="btn btn-primary btn-sm">Get Started</a>
-  </div>
-  <button class="ham" id="ham" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#services" onclick="closeMenu()">Services</a>
-  <a href="#why-us" onclick="closeMenu()">Why Us</a>
-  <a href="#coming-soon" onclick="closeMenu()">Coming Soon</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
-  <a href="#contact" class="btn btn-primary" onclick="closeMenu()">Get Started</a>
-</div>
-
-<section class="hero">
-  <div class="hero-glow hero-glow-1"></div>
-  <div class="hero-glow hero-glow-2"></div>
-  <div class="hero-inner">
-    <div class="hero-pill"><div class="pill-dot"></div>Digital Automation Agency</div>
-    <h1>Smart Websites &<br><em>Automation Systems</em><br>for Modern Businesses</h1>
-    <p class="hero-p">We help businesses get more customers and never miss a lead again — with modern websites and automated workflows.</p>
-    <div class="hero-cta">
-      <a href="#contact" class="btn btn-primary btn-lg">Get Started →</a>
-      <a href="#services" class="btn btn-ghost btn-lg">See Pricing</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-n">3<b>+</b></div><div class="stat-l">Core services</div></div>
-      <div class="stat"><div class="stat-n">24<b>/7</b></div><div class="stat-l">Lead capture</div></div>
-      <div class="stat"><div class="stat-n">100<b>%</b></div><div class="stat-l">Automated</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section section-alt" id="services">
-  <div class="s-head">
-    <div class="s-label">Pricing & Services</div>
-    <h2 class="s-title">Simple plans.<br>Powerful results.</h2>
-    <p class="s-sub">Pick the package that fits your business — clear pricing, no surprises.</p>
-  </div>
-  <div class="srv-grid">
-    <div class="srv-card">
-      <div class="srv-top"><div class="srv-icon">🌐</div></div>
-      <h3>Website Only</h3>
-      <p>A modern, professional website that helps customers understand your business and contact you with ease.</p>
-      <div class="srv-price"><div class="srv-price-num">$99</div><div class="srv-price-mo">/month</div></div>
-      <div class="srv-price-note">Perfect for getting online professionally</div>
-      <ul class="srv-features">
-        <li>Custom modern design</li>
-        <li>Fully mobile responsive</li>
-        <li>Contact form included</li>
-        <li>Fast & SEO-ready</li>
-      </ul>
-      <button class="srv-btn" onclick="scrollContact()">Get Started</button>
-    </div>
-    <div class="srv-card featured">
-      <div class="srv-top"><div class="srv-icon">⚡</div><div class="srv-popular">Best Value</div></div>
-      <h3>Website + Automation</h3>
-      <p>Full package: professional website AND a complete lead automation system with Google Sheets integration.</p>
-      <div class="srv-price"><div class="srv-price-num">$249</div><div class="srv-price-mo">/month</div></div>
-      <div class="srv-price-note">Everything in one powerful package</div>
-      <ul class="srv-features">
-        <li>Full website build</li>
-        <li>Lead capture automation</li>
-        <li>Google Sheets integration</li>
-        <li>Instant lead notifications</li>
-        <li>Priority support</li>
-      </ul>
-      <button class="srv-btn" onclick="scrollContact()">Get Started</button>
-    </div>
-    <div class="srv-card">
-      <div class="srv-top"><div class="srv-icon">⚙️</div></div>
-      <h3>Automation Only</h3>
-      <p>Connect your existing business to an automated system that routes customer inquiries straight into Google Sheets.</p>
-      <div class="srv-price"><div class="srv-price-num">$149</div><div class="srv-price-mo">/month</div></div>
-      <div class="srv-price-note">Works with your existing website</div>
-      <ul class="srv-features">
-        <li>Lead capture system</li>
-        <li>Google Sheets sync</li>
-        <li>Real-time notifications</li>
-        <li>Zero manual data entry</li>
-      </ul>
-      <button class="srv-btn" onclick="scrollContact()">Get Started</button>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="why-us">
-  <div class="s-head">
-    <div class="s-label">Why NeuroFlow</div>
-    <h2 class="s-title">Built for businesses<br>that mean business.</h2>
-    <p class="s-sub">We remove the bottlenecks that cost you customers and time every single day.</p>
-  </div>
-  <div class="why-grid">
-    <div class="why-card"><div class="why-no">01</div><h4>No Lost Customer Requests</h4><p>Every inquiry is automatically captured and stored. Nothing falls through the cracks — ever.</p></div>
-    <div class="why-card"><div class="why-no">02</div><h4>Faster Response Time</h4><p>Your team gets notified the moment a lead arrives, so you can respond before the competition does.</p></div>
-    <div class="why-card"><div class="why-no">03</div><h4>Automated Workflow</h4><p>Stop copying data manually. Our systems route information automatically to exactly where it belongs.</p></div>
-    <div class="why-card"><div class="why-no">04</div><h4>More Organized Operations</h4><p>Customer data flows cleanly into Google Sheets — structured, searchable, and always up to date.</p></div>
-    <div class="why-card"><div class="why-no">05</div><h4>Saves Time & Increases Efficiency</h4><p>Hours saved every week on admin work, so your team can focus on growing.</p></div>
-    <div class="why-card" style="display:flex;align-items:center;justify-content:center;text-align:center;background:var(--blue-xlight)">
-      <div>
-        <div style="font-size:2.2rem;margin-bottom:12px">🚀</div>
-        <div style="font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;color:var(--blue);letter-spacing:-0.02em;margin-bottom:8px">Ready to grow?</div>
-        <div style="font-size:0.82rem;color:var(--muted);margin-bottom:16px">Start automating today</div>
-        <button class="btn btn-primary btn-sm" onclick="scrollContact()">Get Started</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section-alt" id="coming-soon">
-  <div class="s-head">
-    <div class="s-label">What's Next</div>
-    <h2 class="s-title">The next level<br>is almost here.</h2>
-  </div>
-  <div class="cs-card">
-    <div class="cs-left">
-      <div class="cs-badge"><div class="cs-badge-dot"></div>Coming Soon</div>
-      <h3>Telegram AI<br>Chatbot System</h3>
-      <p>An intelligent AI chatbot built into Telegram — automatically handling messages, answering questions, and capturing leads around the clock.</p>
-      <div class="cs-feats">
-        <div class="cs-feat"><div class="cs-feat-dot"></div>Auto-replies to messages</div>
-        <div class="cs-feat"><div class="cs-feat-dot"></div>Answers common questions</div>
-        <div class="cs-feat"><div class="cs-feat-dot"></div>Available 24/7, every day</div>
-        <div class="cs-feat"><div class="cs-feat-dot"></div>Generates leads via chat</div>
-      </div>
-    </div>
-    <div class="cs-right">
-      <div class="cs-icon">🤖</div>
-      <div class="cs-notify">AI is online and ready</div>
-    </div>
-  </div>
-</section>
-
-<div class="cta-section">
-  <div class="cta-wrap">
-    <div class="cta-left">
-      <h2>Start automating your business today and grow faster with NeuroFlow Systems</h2>
-      <p>Takes less than 5 minutes to get in touch. We'll handle everything else.</p>
-    </div>
-    <div class="cta-actions">
-      <button class="btn btn-white btn-lg" onclick="scrollContact()">Contact Us</button>
-      <a href="#services" class="btn btn-ghost-inv btn-lg">View Pricing</a>
-    </div>
-  </div>
-</div>
-
-<section class="section" id="contact">
-  <div class="contact-grid">
-    <div class="ct-left">
-      <div class="s-label">Contact Us</div>
-      <h3>Let's build something great together.</h3>
-      <p>Fill out the form and our team will get back to you within 24 hours to discuss your project.</p>
-      <div class="ct-details">
-        <div class="ct-detail"><div class="ct-detail-icon">📞</div><a href="tel:+38267539877">+382 67 539 877</a></div>
-        <div class="ct-detail"><div class="ct-detail-icon">✉️</div><a href="mailto:m71051705@gmail.com">m71051705@gmail.com</a></div>
-      </div>
-      <div class="ct-hours"><strong>Response time</strong><p>We typically respond within 24 hours. For urgent inquiries, feel free to call or email us directly.</p></div>
-    </div>
-    <div class="ct-form-wrap" id="formWrap">
-      <div id="formContent">
-        <h4>Send us a message</h4>
-        <form id="ctForm" novalidate>
-          <div class="f-row">
-            <div class="f-group">
-              <label>Full Name *</label>
-              <input type="text" id="fname" placeholder="John Smith">
-              <div class="f-err" id="fnameErr">Please enter your name.</div>
-            </div>
-            <div class="f-group">
-              <label>Phone Number *</label>
-              <input type="tel" id="fphone" placeholder="+1 555 000 0000">
-              <div class="f-err" id="fphoneErr">Please enter your phone number.</div>
-            </div>
-          </div>
-          <div class="f-group">
-            <label>Interested In</label>
-            <select id="fservice">
-              <option value="">Select a service (optional)</option>
-              <option>Website Only — $99/mo</option>
-              <option>Automation System — $149/mo</option>
-              <option>Website + Automation — $249/mo</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
-          <div class="f-group">
-            <label>Message *</label>
-            <textarea id="fmsg" placeholder="Tell us about your business..."></textarea>
-            <div class="f-err" id="fmsgErr">Please enter a message.</div>
-          </div>
-          <button type="submit" class="btn btn-primary f-submit" id="fsubmit">Send Message →</button>
-        </form>
-      </div>
-      <div class="f-success" id="fSuccess">
-        <div class="f-success-icon">✓</div>
-        <h4>Message Sent!</h4>
-        <p>Thank you for reaching out.<br>We'll get back to you within 24 hours.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-brand">Neuro<span>Flow</span> Systems</div>
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#why-us">Why Us</a>
-    <a href="#coming-soon">Coming Soon</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <div class="footer-copy">© 2026 NeuroFlow Systems. All rights reserved.</div>
-</footer>
-
-<script>
-window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>24)});
-function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');document.getElementById('ham').classList.toggle('open')}
-function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');document.getElementById('ham').classList.remove('open')}
-function scrollContact(){document.getElementById('contact').scrollIntoView({behavior:'smooth'})}
-
-document.getElementById('ctForm').addEventListener('submit',async function(e){
-  e.preventDefault();
-  const fname=document.getElementById('fname');
-  const fphone=document.getElementById('fphone');
-  const fmsg=document.getElementById('fmsg');
-  let ok=true;
-  [fname,fphone,fmsg].forEach(f=>f.classList.remove('err'));
-  document.querySelectorAll('.f-err').forEach(el=>el.classList.remove('show'));
-  if(!fname.value.trim()){fname.classList.add('err');document.getElementById('fnameErr').classList.add('show');ok=false}
-  if(!fphone.value.trim()||fphone.value.trim().length<7){fphone.classList.add('err');document.getElementById('fphoneErr').classList.add('show');ok=false}
-  if(!fmsg.value.trim()){fmsg.classList.add('err');document.getElementById('fmsgErr').classList.add('show');ok=false}
-  if(!ok)return;
-  const btn=document.getElementById('fsubmit');
-  btn.textContent='Sending...';btn.disabled=true;
-  const payload={name:fname.value.trim(),phone:fphone.value.trim(),service:document.getElementById('fservice').value,message:fmsg.value.trim(),time:new Date().toISOString()};
-  try{
-    const res=await fetch('https://neuroflow1234431.app.n8n.cloud/webhook/e05cefde-86b4-4d38-8404-b14ea11115a2',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-    if(!res.ok)throw new Error();
-    document.getElementById('formContent').style.display='none';
-    document.getElementById('fSuccess').classList.add('show');
-  }catch(err){
-    btn.textContent='Send Message →';btn.disabled=false;
-    alert('Something went wrong. Please try again or contact us directly.');
-  }
-});
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 </script>
 </body>
 </html>
